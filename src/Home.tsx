@@ -39,6 +39,7 @@ const Home: React.FC = () => {
             value={text}
             onChange={e => setText(e.target.value)}
           ></textarea>
+          <br />
           <button onClick={handleClick}>Share</button>
         </>
       ) : (
