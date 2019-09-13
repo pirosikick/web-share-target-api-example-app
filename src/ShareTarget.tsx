@@ -28,17 +28,25 @@ const ShareTarget: React.FC = () => {
     <div>
       <h1>Web Share Target API</h1>
       <table>
-        <thead>
-          <th>document.referer</th>
-          <th>title</th>
-          <th>text</th>
-          <th>url</th>
-        </thead>
         <tbody>
-          <td>{info.referer}</td>
-          <td>{info.title}</td>
-          <td>{info.text}</td>
-          <td>{info.url}</td>
+          <tr>
+            <th>referer</th>
+            <td>{info.referer}</td>
+          </tr>
+          <tr>
+            <th>title</th>
+            <td>{info.title}</td>
+          </tr>
+          <tr>
+            <th>text</th>
+            <td>
+              <pre>{info.text}</pre>
+            </td>
+          </tr>
+          <tr>
+            <th>url</th>
+            <td>{info.url}</td>
+          </tr>
         </tbody>
       </table>
     </div>
