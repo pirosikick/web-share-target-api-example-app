@@ -18,7 +18,8 @@ const Home: React.FC = () => {
       // @ts-ignore
       await navigator.share({
         title: document.title,
-        url: window.location.href
+        url: window.location.href,
+        text
       });
     } catch (err) {}
   };
