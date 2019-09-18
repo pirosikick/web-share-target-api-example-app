@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 interface Info {
+  href: string;
   referer: string | null;
   title: string | null;
   text: string | null;
@@ -11,18 +12,21 @@ const Empty = () => <span style={{ color: "gray" }}>empty</span>;
 
 const ShareTarget: React.FC = () => {
   const [info, setInfo] = useState<Info>({
+    href: "",
     referer: "",
     title: "",
     text: "",
     url: ""
   });
   useEffect(() => {
+    // Shared data is send as URL search params.
     const parsedUrl = new URL(window.location.href);
     setInfo({
-      referer: document.referrer,
+      href: window.location.href,
       title: parsedUrl.searchParams.get("title"),
       text: parsedUrl.searchParams.get("text"),
-      url: parsedUrl.searchParams.get("url")
+      url: parsedUrl.searchParams.get("url"),
+      referer: document.referrer
     });
   }, []);
 
@@ -36,6 +40,8 @@ const ShareTarget: React.FC = () => {
       <p>{info.text || <Empty />}</p>
       <h3>url</h3>
       <p>{info.url || <Empty />}</p>
+      <h2>location.href</h2>
+      <p>{info.href || <Empty />}</p>
       <h2>document.referer</h2>
       <p>{info.referer || <Empty />}</p>
     </div>
